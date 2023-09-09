@@ -2,7 +2,7 @@ import "./App.css";
 import ExpenseItem from "./components/ExpenseItem";
 
 function App() {
-  const Expenses = [
+  let Expenses = [
     {
       expenseDate: new Date(2021, 2, 28),
       expenseTitle: "Food Expenditure",
@@ -38,8 +38,8 @@ function App() {
     let x=[];
     for(let i=0;i<100;i++){
       if(Expenses[i]!==undefined){
-        x.push(<ExpenseItem 
-          expenseDate={Expenses[i].expenseDate.toISOString()} 
+        x.push(<ExpenseItem
+          expenseDate={Expenses[i].expenseDate} 
           expenseTitle={Expenses[i].expenseTitle} 
           expenseAmount={Expenses[i].expenseAmount} 
           LocationOfExpenditure={Expenses[i].LocationOfExpenditure} />)
