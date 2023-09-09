@@ -1,7 +1,7 @@
 import React from "react";
 import "./ExpenseDate.css"
 
-export default function ExpenseDate(props) {
+ const ExpenseDate=(props)=> {
   let [month, year, day] = ["", "", ""];
 
 
@@ -18,3 +18,5 @@ export default function ExpenseDate(props) {
     </div>
   );
 }
+
+export default ExpenseDate
