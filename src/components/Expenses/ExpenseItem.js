@@ -2,8 +2,14 @@ import React from "react";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
-import Card from "../UI/Card"
+
 const ExpenseItem=(props)=> {
+
+  const deleteExpenseHandler=(e)=>{
+    console.log(e)
+    e.target.parentElement.parentElement.remove();
+  } 
+
   return (
     <div>
       <div className="expense-item">
@@ -15,6 +21,7 @@ const ExpenseItem=(props)=> {
           location={props.LocationOfExpenditure}
           title={props.expenseTitle}
         />
+        <button onClick={deleteExpenseHandler}>Delete Expense</button>
       </div>
     </div>
   );

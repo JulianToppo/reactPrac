@@ -1,6 +1,8 @@
 import "./App.css";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import "./components/Expenses/Expenses.css";
+
+
 import Card from "./components/UI/Card";
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
     {
       expenseDate: new Date(2021, 2, 28),
       expenseTitle: "Food Expenditure",
-      expenseAmount: 500,
+      expenseAmount: 400,
       LocationOfExpenditure: "India",
     },
     {
@@ -39,7 +41,7 @@ function App() {
 
   let expenseArr = () => {
     let x = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < Expenses.length; i++) {
       if (Expenses[i] !== undefined) {
         x.push(
           <ExpenseItem
