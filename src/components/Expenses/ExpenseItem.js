@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
@@ -10,6 +10,22 @@ const ExpenseItem=(props)=> {
     e.target.parentElement.parentElement.remove();
   } 
 
+  const [title,setTitle]=useState(props.expenseTitle);
+  const [expenseVal,setExpense]=useState(props.expenseAmount)
+
+  const changeTitleHandler=()=>{
+    setTitle('Updated!!!')
+    console.log("Title Updated")
+  }
+
+  // const deleteExpenseHandler=(e)=>{
+  //   console.log(e)
+  //   e.target.parentElement.parentElement.remove();
+  // } 
+  const changeExpenseHandler=()=>{  
+    setExpense(100);
+  } 
+
   return (
     <div>
       <div className="expense-item">
@@ -17,11 +33,13 @@ const ExpenseItem=(props)=> {
           <ExpenseDate date={props.expenseDate} />
         </div>
         <ExpenseDetails
-          amount={props.expenseAmount}
+          amount={expenseVal}
           location={props.LocationOfExpenditure}
-          title={props.expenseTitle}
+          title={title}
         />
-        <button onClick={deleteExpenseHandler}>Delete Expense</button>
+        {/* <button onClick={deleteExpenseHandler}>Delete Expense</button> */}
+        <button onClick={changeExpenseHandler}>Change Expense</button>
+        <button onClick={changeTitleHandler}>Change Title</button>
       </div>
     </div>
   );
