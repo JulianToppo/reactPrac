@@ -1,8 +1,8 @@
-import React, { useReducer, useState } from "react";
+import React, {useState } from "react";
 import "./ExpenseForm.css";
 import "./NewExpense.css";
 
-export default function ExpenseForm() {
+export default function ExpenseForm(props) {
   // const [enteredTitle, setTitle] = useState("");
   // const [enteredAmount, setAmount] = useState("");
   // const [enteredDateOfExpense, setDateOfExpense] = useState("");
@@ -44,11 +44,12 @@ export default function ExpenseForm() {
       ...userFormState,
     };
 
-    console.log(formObj);
+    props.onSaveExpenseData(formObj);
+   
   }
 
   return (
-    <div className="new-expense">
+    
       <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
           <div className="new-expense__controls">
@@ -93,6 +94,6 @@ export default function ExpenseForm() {
           <button type="submit">Enter Details</button>
         </div>
       </form>
-    </div>
+    
   );
 }
