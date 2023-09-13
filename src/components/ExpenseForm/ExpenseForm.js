@@ -1,30 +1,55 @@
-import React, { useState } from "react";
-import './ExpenseForm.css'
-import './NewExpense.css'
+import React, { useReducer, useState } from "react";
+import "./ExpenseForm.css";
+import "./NewExpense.css";
 
 export default function ExpenseForm() {
-  const [enteredTitle, setTitle] = useState("");
-  const [enteredAmount, setAmount] = useState("");
-  const [enteredDateOfExpense, setDateOfExpense] = useState("");
+  // const [enteredTitle, setTitle] = useState("");
+  // const [enteredAmount, setAmount] = useState("");
+  // const [enteredDateOfExpense, setDateOfExpense] = useState("");
+
+  const [userFormState, setUserFormState] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDateOfExpense: "",
+  });
 
   function changeTitle(e) {
-    console.log(e.target.value);
-    setTitle(e.target.value);
+    setUserFormState((userFormState) => {
+      return { ...userFormState, enteredTitle: e.target.value };
+    });
+    // console.log(e.target.value);
+    // setTitle();
   }
 
   function changeAmount(e) {
-    console.log(e.target.value);
-    setAmount(e.target.value);
+    setUserFormState((userFormState) => {
+      return { ...userFormState, enteredAmount: e.target.value };
+    });
+    // console.log(e.target.value);
+    // setAmount(e.target.value);
   }
 
   function changeDate(e) {
-    console.log(e.target.value);
-    setDateOfExpense(e.target.value);
+    setUserFormState((userFormState) => {
+      return { ...userFormState, enteredDateOfExpense: e.target.value };
+    });
+    // console.log(e.target.value);
+    // setDateOfExpense(e.target.value);
+  }
+
+  function submitHandler(e) {
+    e.preventDefault();
+
+    let formObj = {
+      ...userFormState,
+    };
+
+    console.log(formObj);
   }
 
   return (
     <div className="new-expense">
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
           <div className="new-expense__controls">
             <label className="new-expense__control label" htmlFor="title">
@@ -33,7 +58,7 @@ export default function ExpenseForm() {
             <input
               className="new-expense__control input"
               id="title"
-              value={enteredTitle}
+              value={userFormState.enteredTitle}
               onChange={changeTitle}
               type="text"
             ></input>
@@ -46,7 +71,7 @@ export default function ExpenseForm() {
             <input
               className="new-expense__control input"
               id="amount"
-              value={enteredAmount}
+              value={userFormState.enteredAmount}
               type="number"
               onChange={changeAmount}
             ></input>
@@ -60,7 +85,7 @@ export default function ExpenseForm() {
               className="new-expense__control input"
               type="date"
               id="date"
-              value={enteredDateOfExpense}
+              value={userFormState.enteredDateOfExpense}
               onChange={changeDate}
             ></input>
           </div>
