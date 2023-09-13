@@ -1,4 +1,5 @@
 import "./App.css";
+import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import "./components/Expenses/Expenses.css";
 
@@ -69,6 +70,7 @@ function App() {
   return (
     <div>
       <h2>Let's get started</h2>
+      <ExpenseForm/>
       <h2>Expense Items</h2>
       <Card className="expenses">{expenseArr()}</Card>
 
