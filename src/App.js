@@ -60,9 +60,9 @@ function App() {
 
   return (
     <div>
-      <h2>Let's get started</h2>
+      {/* <h2>Let's get started</h2> */}
       <NewExpense onAddExpense={onAddExpenseHandler} />
-      <h2>Expense Items</h2>
+      {/* <h2>Expense Items</h2> */}
       <Card
         className="expenses"
         expenseValue={Expenses}

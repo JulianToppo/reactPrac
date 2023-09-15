@@ -1,11 +1,9 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import "./ExpenseForm.css";
 import "./NewExpense.css";
 
 export default function ExpenseForm(props) {
-  // const [enteredTitle, setTitle] = useState("");
-  // const [enteredAmount, setAmount] = useState("");
-  // const [enteredDateOfExpense, setDateOfExpense] = useState("");
+  const [showForm, setShowForm] = useState(true);
 
   const [userFormState, setUserFormState] = useState({
     enteredTitle: "",
@@ -45,55 +43,75 @@ export default function ExpenseForm(props) {
     };
 
     props.onSaveExpenseData(formObj);
-   
+    toggleFromVisibility(e);
   }
 
+  function toggleFromVisibility(e) {
+    console.log("visibilitytoggled");
+    e.preventDefault();
+    let x = showForm ^ true;
+    setShowForm(x);
+  }
   return (
-    
-      <form onSubmit={submitHandler}>
-        <div className="new-expense__controls">
+    <div>
+      {showForm == true && (
+        <form onSubmit={submitHandler}>
           <div className="new-expense__controls">
-            <label className="new-expense__control label" htmlFor="title">
-              Expense Title:
-            </label>
-            <input
-              className="new-expense__control input"
-              id="title"
-              value={userFormState.enteredTitle}
-              onChange={changeTitle}
-              type="text"
-            ></input>
-          </div>
+            <div className="new-expense__controls">
+              <label className="new-expense__control label" htmlFor="title">
+                Expense Title:
+              </label>
+              <input
+                className="new-expense__control input"
+                id="title"
+                value={userFormState.enteredTitle}
+                onChange={changeTitle}
+                type="text"
+              ></input>
+            </div>
 
-          <div className="new-expense__controls">
-            <label className="new-expense__control label" htmlFor="amount">
-              Amount:
-            </label>
-            <input
-              className="new-expense__control input"
-              id="amount"
-              value={userFormState.enteredAmount}
-              type="number"
-              onChange={changeAmount}
-            ></input>
-          </div>
+            <div className="new-expense__controls">
+              <label className="new-expense__control label" htmlFor="amount">
+                Amount:
+              </label>
+              <input
+                className="new-expense__control input"
+                id="amount"
+                value={showForm ? userFormState.enteredAmount : ""}
+                type="number"
+                onChange={changeAmount}
+              ></input>
+            </div>
 
-          <div className="new-expense__controls">
-            <label className="new-expense__control label" htmlFor="date">
-              Date:
-            </label>
-            <input
-              className="new-expense__control input"
-              type="date"
-              id="date"
-              value={userFormState.enteredDateOfExpense}
-              onChange={changeDate}
-            ></input>
+            <div className="new-expense__controls">
+              <label className="new-expense__control label" htmlFor="date">
+                Date:
+              </label>
+              <input
+                className="new-expense__control input"
+                type="date"
+                id="date"
+                value={userFormState.enteredDateOfExpense}
+                onChange={changeDate}
+              ></input>
+            </div>
+            <button type="button" onClick={toggleFromVisibility}>
+              Cancel
+            </button>
+            <button type="submit">Enter Details</button>
           </div>
-
-          <button type="submit">Enter Details</button>
+        </form>
+      )}
+      {!showForm && (
+        <div>
+          <button
+            className="new-expense__controls input"
+            onClick={toggleFromVisibility}
+          >
+            Add New Expenses
+          </button>
         </div>
-      </form>
-    
+      )}
+    </div>
   );
 }
