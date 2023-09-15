@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Card.css";
 import ExpensesFilter from "../ExpenseForm/ExpenseFilter";
 import ExpensesList from "../Expenses/ExpensesList";
+import ExpensesChart from "../Expenses/ExpensesChart";
 
 const Card = (props) => {
   const classes = "card " + props.className;
@@ -13,7 +14,7 @@ const Card = (props) => {
   });
 
   let addMoreNotification =
-    filteredExpenses.length == 1 ? (
+    filteredExpenses.length === 1 ? (
       <h1>Only single Expense here. Please add more..</h1>
     ) : (
       ""
@@ -22,6 +23,7 @@ const Card = (props) => {
   return (
     <div className={classes}>
       <ExpensesFilter selectedYear={filterYear} changeYear={setFilteredYear} />
+      <ExpensesChart expenses={filteredExpenses} />
       <ExpensesList filteredExpensesList={filteredExpenses} />
       {addMoreNotification}
     </div>

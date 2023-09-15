@@ -4,7 +4,7 @@ import './ExpensesList.css'
 
 export default function ExpensesList(props) {
   let outputMessageForExpenses =
-    props.filteredExpensesList.length == 0 ? (
+    props.filteredExpensesList.length === 0 ? (
       <h1 className="expenses-list__fallback">
         No Expenses Found
       </h1>
