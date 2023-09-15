@@ -17,10 +17,6 @@ const ExpenseItem = (props) => {
     console.log("Title Updated");
   };
 
-  // const deleteExpenseHandler=(e)=>{
-  //   console.log(e)
-  //   e.target.parentElement.parentElement.remove();
-  // }
   const changeExpenseHandler = () => {
     setExpense(100);
   };
