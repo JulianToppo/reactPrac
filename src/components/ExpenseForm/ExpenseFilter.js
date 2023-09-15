@@ -7,6 +7,7 @@ const ExpensesFilter = (props) => {
   function changeSelectedYearHandler(e){
     e.preventDefault();
     props.changeYear(e.target.value);
+    console.log("Selected Year changed")
   }
 
   return (
