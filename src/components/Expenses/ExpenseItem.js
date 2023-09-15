@@ -3,28 +3,27 @@ import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 
-const ExpenseItem=(props)=> {
-
-  const deleteExpenseHandler=(e)=>{
-    console.log(e)
+const ExpenseItem = (props) => {
+  const deleteExpenseHandler = (e) => {
+    console.log(e);
     e.target.parentElement.parentElement.remove();
-  } 
+  };
 
-  const [title,setTitle]=useState(props.expenseTitle);
-  const [expenseVal,setExpense]=useState(props.expenseAmount)
+  const [title, setTitle] = useState(props.expenseTitle);
+  const [expenseVal, setExpense] = useState(props.expenseAmount);
 
-  const changeTitleHandler=()=>{
-    setTitle('Updated!!!')
-    console.log("Title Updated")
-  }
+  const changeTitleHandler = () => {
+    setTitle("Updated!!!");
+    console.log("Title Updated");
+  };
 
   // const deleteExpenseHandler=(e)=>{
   //   console.log(e)
   //   e.target.parentElement.parentElement.remove();
-  // } 
-  const changeExpenseHandler=()=>{  
+  // }
+  const changeExpenseHandler = () => {
     setExpense(100);
-  } 
+  };
 
   return (
     <div>
@@ -43,6 +42,6 @@ const ExpenseItem=(props)=> {
       </div>
     </div>
   );
-}
+};
 
 export default ExpenseItem;

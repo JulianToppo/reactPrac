@@ -7,85 +7,55 @@ import "./components/Expenses/Expenses.css";
 
 import Card from "./components/UI/Card";
 
+const DUMMY_VALUE=[
+  {
+    expenseDate: new Date(2021, 2, 28),
+    expenseTitle: "Food Expenditure",
+    expenseAmount: 5000,
+    LocationOfExpenditure: "India",
+  },
+  {
+    expenseDate: new Date(2021, 2, 28),
+    expenseTitle: "Food Expenditure",
+    expenseAmount: 400,
+    LocationOfExpenditure: "India",
+  },
+  {
+    expenseDate: new Date(2021, 2, 28),
+    expenseTitle: "Food Expenditure",
+    expenseAmount: 300,
+    LocationOfExpenditure: "India",
+  },
+  {
+    expenseDate: new Date(2021, 2, 28),
+    expenseTitle: "Food Expenditure",
+    expenseAmount: 200,
+    LocationOfExpenditure: "India",
+  },
+  {
+    expenseDate: new Date(2021, 2, 28),
+    expenseTitle: "Food Expenditure",
+    expenseAmount: 100,
+    LocationOfExpenditure: "India",
+  },
+]
+
 function App() {
-  const [Expenses, setExpenses] =useState( [
-    {
-      expenseDate: new Date(2021, 2, 28),
-      expenseTitle: "Food Expenditure",
-      expenseAmount: 500,
-      LocationOfExpenditure: "India",
-    },
-    {
-      expenseDate: new Date(2021, 2, 28),
-      expenseTitle: "Food Expenditure",
-      expenseAmount: 400,
-      LocationOfExpenditure: "India",
-    },
-    {
-      expenseDate: new Date(2021, 2, 28),
-      expenseTitle: "Food Expenditure",
-      expenseAmount: 500,
-      LocationOfExpenditure: "India",
-    },
-    {
-      expenseDate: new Date(2021, 2, 28),
-      expenseTitle: "Food Expenditure",
-      expenseAmount: 500,
-      LocationOfExpenditure: "India",
-    },
-    {
-      expenseDate: new Date(2021, 2, 28),
-      expenseTitle: "Food Expenditure",
-      expenseAmount: 500,
-      LocationOfExpenditure: "India",
-    },
-  ]
-  )
-
-  let expenseArr = (expenses) => {
-    let x = [];
-    console.log("expenseArrCalled");
-    for (let i = 0; i < expenses.length; i++) {
-      if (expenses[i] !== undefined) {
-        x.push(
-          <ExpenseItem
-            expenseDate={expenses[i].expenseDate}
-            expenseTitle={expenses[i].expenseTitle}
-            expenseAmount={expenses[i].expenseAmount}
-            LocationOfExpenditure={expenses[i].LocationOfExpenditure}
-          />
-        );
-      } else {
-        x.push(
-          <ExpenseItem
-            expenseDate={""}
-            expenseTitle={""}
-            expenseAmount={""}
-            LocationOfExpenditure={""}
-          />
-        );
-      }
-    }
-
-    return x;
-  };
+  const [Expenses, setExpenses] = useState(DUMMY_VALUE);
 
   function onAddExpenseHandler(expense) {
-    console.log("Upstream Add Expense App");
-    console.log("2222",expense);
-    setExpenses((Expenses) => {
-      console.log("inside setExpense",expense)
-      return [
-        ...Expenses,
-        {
-          expenseDate: new Date(),
+    const obj={
+         expenseDate: new Date(),
           expenseTitle: expense.enteredTitle,
           expenseAmount: expense.enteredAmount,
-          LocationOfExpenditure: "India",
-        },
+          LocationOfExpenditure: "India"
+      }
+    setExpenses((Expenses) => {
+      
+      return [   obj,...Expenses     
+      
       ];
     });
-  
   }
 
   return (
@@ -96,13 +66,10 @@ function App() {
       <Card
         className="expenses"
         expenseValue={Expenses}
-        onAddExpenseArray={expenseArr}
+        //onAddExpenseArray={expenseArr}
       >
         {}
       </Card>
-
-      {/* <ExpenseItem expenseDate={Expenses[0].expenseDate} expenseTitle={Expenses[0].expenseTitle} expenseAmount={Expenses[0].expenseAmount} LocationOfExpenditure={Expenses[0].LocationOfExpenditure} /> */}
-      {/* <ExpenseItem /> */}
     </div>
   );
 }

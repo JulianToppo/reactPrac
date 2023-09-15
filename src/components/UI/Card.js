@@ -1,12 +1,29 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import './Card.css';
+import ExpensesFilter from '../ExpenseForm/ExpenseFilter';
+import ExpenseItem from '../Expenses/ExpenseItem';
 
 const Card = (props) => {
   const classes = 'card ' + props.className;
-
-  console.log(props.children)
-  return <div className={classes}>{props.onAddExpenseArray(props.expenseValue)}</div>;
+  const [filterYear,setFilteredYear]=useState(2021);
+  
+  return <div className={classes}>
+    <ExpensesFilter selected={filterYear} />
+    
+    {
+      
+      props.expenseValue.map((expenses,i)=>(
+       
+         <ExpenseItem key={i+new Date().toTimeString()}
+        expenseDate={expenses.expenseDate}
+        expenseTitle={expenses.expenseTitle}
+        expenseAmount={expenses.expenseAmount}
+        LocationOfExpenditure={expenses.LocationOfExpenditure} />
+      )
+      )
+    }
+    
+    </div>;
 };
 
 export default Card;
